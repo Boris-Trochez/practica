@@ -5,13 +5,23 @@ body
 
 .firstLayer
 {
-    background-color: cornsilk;
-    color: blue;
+    background-color: rgb(107, 103, 103);
     text-align: center;
 }
 
 .secondLayer
 {
-    background-color: brown;
+    background-color: rgb(107, 40, 40);
     color: burlywood;
+}
+
+#brand
+{
+    text-align: left;
+}
+
+#title
+{
+    font-size: 50px;
+    color: rgb(161, 155, 155);
 }
