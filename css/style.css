@@ -38,3 +38,8 @@ body
     border-radius: 10px;
     border-width: 5px;
 }
+ #subtitle
+{
+    font-family:  sans-serif;
+    color: rgb(180, 207, 216);
+}
