@@ -49,6 +49,17 @@ body
     border-radius: 10px;
     border-width: 5px;
 }
+
+#dontpushme
+{
+    background-color: rgba(250, 53, 3, 0.404);
+    color: wheat;
+    font-size: large;
+    border-radius: 10px;
+    border-width: 5px; 
+    border-color: rgb(231, 41, 8);
+}
+
  #subtitle
 {
     font-family:  sans-serif;
