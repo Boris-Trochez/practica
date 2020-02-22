@@ -15,3 +15,9 @@ body
     background-color: brown;
     color: burlywood;
 }
+
+ #subtitle
+{
+    font-family:  sans-serif;
+    color: rgb(180, 207, 216);
+}
