@@ -1,12 +1,21 @@
 body
 {
     background-color: black;
+    padding: 30px;
 }
+
+
 
 .firstLayer
 {
-    background-color: rgb(107, 103, 103);
+    background-color: #2b2727;
     text-align: center;
+    box-shadow: -5px 1px 16px 22px rgba(201,201,201,0.95);
+    border-radius: 113px 0px 113px 0px;
+    -moz-border-radius: 113px 0px 113px 0px;
+    -webkit-border-radius: 113px 0px 113px 0px;
+    border: 5px solid;
+    border-color: rgb(5, 72, 110);
 }
 
 .secondLayer
@@ -17,7 +26,9 @@ body
 
 #brand
 {
-    text-align: left;
+    
+    color: rgb(161, 155, 155);
+    
 }
 
 #title
