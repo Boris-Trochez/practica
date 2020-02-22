@@ -25,3 +25,16 @@ body
     font-size: 50px;
     color: rgb(161, 155, 155);
 }
+
+.dinamicLayer p
+{
+    color: lawngreen;
+}
+
+#pushme
+{
+    background-color: rgb(147, 205, 92);
+    font-size: large;
+    border-radius: 10px;
+    border-width: 5px;
+}
