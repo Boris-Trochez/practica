@@ -24,6 +24,15 @@ body
     color: burlywood;
 }
 
+.secondLayer h3
+{
+    font-family: cursive;
+    color: rgba(250, 249, 249, 0.712);
+    margin-bottom: -2%;
+    
+
+}
+
 #brand
 {
     
@@ -73,8 +82,3 @@ body
     border-color: rgb(231, 41, 8);
 }
 
- #subtitle
-{
-    font-family:  sans-serif;
-    color: rgb(180, 207, 216);
-}
