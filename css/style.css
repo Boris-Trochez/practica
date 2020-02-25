@@ -37,6 +37,19 @@ body
     color: rgb(161, 155, 155);
 }
 
+.dinamicLayer 
+{
+    margin: 40px;
+    padding: 10px;
+    background-color: rgb(37, 6, 121);
+    height: 35px;
+    border-width: 5px;
+    border: solid;
+    border-color: aquamarine;
+    border-radius: 15px;
+}
+
+
 .dinamicLayer p
 {
     color: lawngreen;
