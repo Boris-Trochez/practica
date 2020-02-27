@@ -8,20 +8,25 @@ body
 
 .firstLayer
 {
-    background-color: #2b2727;
+    background-color:  #2b2727;
     text-align: center;
     box-shadow: -5px 1px 16px 22px rgba(201,201,201,0.95);
     border-radius: 113px 0px 113px 0px;
     -moz-border-radius: 113px 0px 113px 0px;
     -webkit-border-radius: 113px 0px 113px 0px;
     border: 5px solid;
-    border-color: rgb(5, 72, 110);
+    border-color: burlywood;
 }
 
 .secondLayer
 {
-    background-color: rgb(107, 40, 40);
+    background-color: black;
     color: burlywood;
+    border: solid;
+    border-width: 5px;
+    border-radius: 15px;
+    padding: 5px;
+    text-align: justify ;
 }
 
 .secondLayer h3
@@ -50,11 +55,11 @@ body
 {
     margin: 40px;
     padding: 10px;
-    background-color: rgb(37, 6, 121);
+    background-color: black; /* rgb(107, 40, 40);*/
     height: 35px;
     border-width: 5px;
     border: solid;
-    border-color: aquamarine;
+    border-color: burlywood;
     border-radius: 15px;
 }
 
@@ -66,19 +71,21 @@ body
 
 #pushme
 {
-    background-color: rgb(147, 205, 92);
+    background-color: rgb(107, 40, 40);
     font-size: large;
     border-radius: 10px;
     border-width: 5px;
+    border-color: burlywood;
+    color: burlywood;
 }
 
 #dontpushme
 {
-    background-color: rgba(250, 53, 3, 0.404);
-    color: wheat;
+    background-color: rgb(107, 40, 40);
     font-size: large;
     border-radius: 10px;
     border-width: 5px; 
-    border-color: rgb(231, 41, 8);
+    border-color: burlywood;
+    color: burlywood;
 }
 
