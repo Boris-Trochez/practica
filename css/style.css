@@ -20,7 +20,7 @@ body
 
 .secondLayer
 {
-    background-color: rgb(107, 40, 40);
+    background-color: black;
     color: burlywood;
     border: solid;
     border-width: 5px;
@@ -55,7 +55,7 @@ body
 {
     margin: 40px;
     padding: 10px;
-    background-color: rgb(107, 40, 40);
+    background-color: black; /* rgb(107, 40, 40);*/
     height: 35px;
     border-width: 5px;
     border: solid;
@@ -71,19 +71,21 @@ body
 
 #pushme
 {
-    background-color: rgb(147, 205, 92);
+    background-color: rgb(107, 40, 40);
     font-size: large;
     border-radius: 10px;
     border-width: 5px;
+    border-color: burlywood;
+    color: burlywood;
 }
 
 #dontpushme
 {
-    background-color: rgba(250, 53, 3, 0.404);
-    color: wheat;
+    background-color: rgb(107, 40, 40);
     font-size: large;
     border-radius: 10px;
     border-width: 5px; 
-    border-color: rgb(231, 41, 8);
+    border-color: burlywood;
+    color: burlywood;
 }
 
