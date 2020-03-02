@@ -1,0 +1,476 @@
+USAR VIM PARA PRGRAMAR // AVERIGUAR
+COMO FUNCIONA EL CONTROL DE VERSIONS SVN
+COMO FUNCIONAN LAS LLAVES PUBLICAS Y PRIVADAS Y HASH1
+
+
+
+
+/, lleva al home
+
+pwd, muestra la ruta en donde estoy
+
+cd, ir a una carpeta
+
+cd .., regresar una carpeta anterior
+
+ls, muestra archivos
+
+ls -al, muestra archivos de forma enlistada incluso ocultos
+
+la - l, muestra archivos enlistados pero no los ocultos
+
+clear, limpiar consola
+
+crl + l, limpiar consola
+
+mkdir, crear una carpeta
+
+touch, crea un archivo sin nada por dentro
+
+cat, muestra rapidamente el contenido de un archivo
+
+history, muestra todos los comando utilizados
+
+rm, borrar archivo
+
+code historia.txt, abre el editor visual sc con el archivo historia.txt
+
+comando --help, muestra como funciona el comando
+
+-   un guion significa que vas a usar una letra
+
+--  dos guiones significa que vas a usar una palabra
+
+df, Muestra el espacio libre en el disco duro
+
+top, Muestra los procesos que más CPU están consumiendo en tiempo real.
+
+mv /home/archivo.txt /home/Documentos/archivo.txt, mv mueve un archivo concreto y lo lleva 
+a un directorio que escojamos eliminándolo de donde antes lo teníamos.
+
+cp /home/archivo.txt /home/Documentos/archivo.txt, cp copia un archivo concreto y lo pega en 
+otro directorio que escojamos
+
+Ctrl + c, Interrumpe cualquier proceso en ejecución de forma inmediata y nos devuelve al prompt
+
+Ctrl + d, Cierra la sesión de la terminal en la que nos encontramos. Si estamos usando una interfaz 
+gráfica en la que hemos abierto una terminal, ésta sólo se cerrará.
+
+
+
+
+Por defecto nosotros nos encontramos en la rama master con la versión 1 del proyecto.
+Crear una nueva rama se trata de copiar un commit (de cualquier rama), 
+pasarlo a otro lado (a otra rama) y continuar el trabajo de una parte específica de nuestro proyecto 
+sin afectar el flujo de trabajo principal (que continúa en la rama master o la rama principal).
+Los equipos de desarrollo tienen un estándar: Todo lo que esté en la rama master va a producción, 
+las nuevas features, características y experimentos van en una rama “development” 
+(para unirse a master cuando estén definitivamente listas) y los issues o errores 
+se solucionan en una rama “hotfix” para unirse a master tan pronto como sea posible
+Crear una nueva rama lo conocemos como Checkout. Unir dos ramas lo conocemos como Merge.
+
+
+
+git init, el archivo aun no esta trackeado...crea el staging (espacio memoria ram, estado temporal) 
+y el repositorio (carpeta .git) en donde guardad el archivo
+
+git add archivo,  archivo pasa a staging y esperando a ser enviado al repositorio... 
+archivo trackeado en staging 
+
+git add ., todos los archivos en la carpeta pasan al staging
+
+git commit -m " ", archivo se va al repositorio (-m para escribir un mensaje ej: git commit -m"version2")...
+archivo trackeado en repositorio el repositorio tiene un nombre por defecto llamado master
+cada commit es una version nueva al repositorio y los numeros que aparecen son el nombre de ese 
+cambio en la base de datos de GIT
+
+git commit -am " ", es una forma de hacer commit y add al mis tiempo, funciona solo cuando ya se han 
+trackeado a staging los documentos anteriormente
+   
+git mv archivo.txt nuevoNombre.txt, para renombrar un archivo
+
+git rm  archivo.txt,   elimina archivo  
+ 
+git status                   cual es el estado de la carpeta
+
+git status --short o -s   muestra mas resumido... Los archivos nuevos que no están rastreados
+                          tienen un ?? a su lado, los archivos que están preparados tienen una A 
+                          y los modificados una M. El estado aparece en dos columnas - la columna 
+                          de la izquierda indica el estado preparado y la columna de la derecha 
+                          indica el estado sin preparar. Por ejemplo, en esa salida, el archivo 
+                          README está modificado en el directorio de trabajo 
+                          pero no está preparado, mientras que lib/simplegit.rb está modificado y 
+                          preparado. El archivo Rakefile fue modificado, preparado y modificado 
+                          otra vez por lo que existen cambios preparados y sin preparar.
+
+git rm-- cached archivo.txt   elimina el archivo del staging sin guardar los cambios hechos despues 
+                              del ultimo commit
+
+git config   configuracion git
+
+git config --list   configuracion git por defecto
+
+git config --list --show-origin    muestra en donde estan guardadas las congiguraciones 
+                                   (configuracion avanzada)
+
+git config --global user.name "Boris Trohez"    configurar de manera global el nombre del usuario 
+                                                de git
+
+git config --global user.email "boris.trochez@gmail.com"    configurar de manera global el correo 
+                                                            del usuario de git
+
+git log historia.txt   muestra las versiones que ha tenido el archivo txt
+
+git show historia.txt  muestra los cambios que han existido sobre un archivo 
+
+esc + shift + zz  es una forma de guardar el archivo en vim y forzar al envio del commit(de esa manera 
+                  se puede salir de una venta vim que es un editor de texto dentro de la terminal)
+
+esc + i       para introducir texto en el editor vim
+
+git diff tagversion1 tagversion2     para comparar cambios hechos entre diferentes versiones
+
+git reset tagversion --soft  nos permite volver a una version anterior, pero las versiones siguen 
+                             en stagin (reset suave)
+
+git reset tagveersion --hard  todo vuelve al estado anterior. se borra todo (reset duro, peligroso)
+
+git log --stat      se pueden ver los cambios especificos en cada commit
+
+git log --all muestra todo el historial
+
+git log --all --graph  muestra unas especies de graficas de las versiones y de los branches que se han hecho
+
+git log --all --graph --decorate --one line  muestra todo mas detallado y comprimido
+
+alias nombreDelAliasDelComando="comando"  esto se usa cuando los comando son muy largos para aprenderlos
+se les poner un alias que sea mucho mas facil recordar lo que signifca y luego solo se pone el nombre del alias
+
+Q   para salir del visualizador que se despliega cuando los cambios que se han realizado son muy largos
+
+git checkout tagversion historia.txt       para ver como era el archivo antes en esa version elegida, 
+                                           nos deja ir mirar, pasear y volver (cuidado! al hacer commit 
+                                           se guardan los cambios de esa version y se borran los actuales)
+
+git checkout -b nombrenuevarama     para crear una nueva rama partiendo de la ultima actualizacion 
+                                    de la rama MASTER
+
+git branch nombreNuevaRama  para crear una nueva rama partiendo del ultimo commit de la rama Master
+
+git checkout nombredelarama     para navegar de entre ramas
+
+git branch     para saber en que rama se encuentra 
+
+git branch -d nombreDeLaRama    para borrar una rama, si aun no esta totalmente merged hay que 
+                                forzarla con git branch -D
+
+git merge documentoParaFucionarConElMaster -ms"mensaje" : para fucionar una rama en la que se ha hecho 
+                                                       cambios con la rama Master. Para hacer le merge 
+                                                       se debe estar en la rama master para que la fucion 
+                                                       se haga en esa rama. Recordar que un merge es un 
+                                                       commit por lo tanto debe ir un mensaje "merge branch 
+                                                       cabecera"
+Nota merge: Cuando hay un conflicto se debe elegir cuales cambios guardar y volver a hacer el commit, para
+finalmente hacer el merge... los conflictos se pueden resolver manualmente o hay una forma mas
+profesional de hacerlo con checkout
+ 
+
+Al principio es muy dificil entender los conceptos del stage y el commit, lo se. Pero a mi me funciono 
+verlo como una tienda. Les comparto:
+Pensemos en una tienda donde comprar un plato de ensalada preparado con tus propias manos. Tu eliges 
+los vegetales y tambien puedes comprar mas de uno. En el momento que entras a la tienda es tu git init, 
+todo ahi esta pero no todo lo vas a comprar, solo lo tienes a disposicion. Entonces preparas un plato 
+poniendo los vegetales e ingredientes. Haces lo mismo con dos o mas platos. Pero solo los que al final 
+vas a comprar los pones en el carrito de compras, ese es tu git add plato_1. Lo que no lo ignoras git 
+ignore plato_2. Tal ves quieras sacarlos del carrito, eso seria git reset HEAD, pero si queres deshacer 
+un plato que ya elaboraste, como que le quitas todo y pones todos lo vegetales en su lugar de regreso 
+seria git rm --cached Al final, llevas tu carrito de compras (stage) a la caja para pagar, el cajero 
+te pide un texto o algo para ponerlo en tu recibo de compra, eso seria tu git commit -m “Mi primera 
+compra aqui”. El cajero te da tu numero de recibo (JH6GFD67KJB889JJJNH…). Asi, si quisieras volver a 
+crear un plato en especifico que creaste en alguna de tu compras anteriores usas 
+git checkout JH6GFD67KJB889JJJNH… plato_X para volver a tenerlo en tu mano, pero recuerda que tienes 
+que volver a ponerlo en el carrito antes de pasar a la caja. O si pensandolo bien no lo querias, lo regresas 
+con git checkout master plato_x
+
+
+Git reset y git rm son comandos con utilidades muy diferentes, pero aún así se confunden muy fácilmente.
+git rm, Este comando nos ayuda a eliminar archivos de Git sin eliminar su historial del sistema de versiones. 
+Esto quiere decir que si necesitamos recuperar el archivo solo debemos “viajar en el tiempo” y recuperar el 
+último commit antes de borrar el archivo en cuestión.
+Recuerda que git rm no puede usarse así nomás. Debemos usar uno de los flags para indicarle a Git cómo eliminar 
+los archivos que ya no necesitamos en la última versión del proyecto:
+git rm --cached: Elimina los archivos del área de Staging y del próximo commit pero los mantiene en nuestro 
+disco duro.
+git rm --force: Elimina los archivos de Git y del disco duro. Git siempre guarda todo, por lo que podemos 
+acceder al registro de la existencia de los archivos, de modo que podremos recuperarlos si es necesario 
+(pero debemos usar comandos más avanzados).
+git reset, Este comando nos ayuda a volver en el tiempo. Pero no como git checkout que nos deja ir, mirar, 
+pasear y volver. Con git reset volvemos al pasado sin la posibilidad de volver al futuro. Borramos la historia 
+y la debemos sobreescribir. No hay vuelta atrás. Este comando es muy peligroso y debemos usarlo solo en caso 
+de emergencia. Recuerda que debemos usar alguna de estas dos opciones
+Hay dos formas de usar git reset: con el argumento --hard, borrando toda la información que tengamos en el 
+área de staging (y perdiendo todo para siempre). O, un poco más seguro, con el argumento --soft, que mantiene 
+allí los archivos del área de staging para que podamos aplicar nuestros últimos cambios pero desde un commit 
+anterior.
+
+git reset tagversion --soft: Borramos todo el historial y los registros de Git pero guardamos los cambios 
+que tengamos en Staging, así podemos aplicar las últimas actualizaciones a un nuevo commit.
+
+git reset tagversion --hard: Borra todo. Todo todito, absolutamente todo. Toda la información de los 
+commits y del área de staging se borra del historial. ¡Pero todavía falta algo!
+
+git reset HEAD: Este es el comando para sacar archivos del área de Staging. No para borrarlos ni nada de eso, 
+solo para que los últimos cambios de estos archivos no se envíen al último commit, a menos que cambiemos de 
+opinión y los incluyamos de nuevo en staging con git add, por supuesto.
+
+
+Por ahora, nuestro proyecto vive únicamente en nuestra computadora. Esto significa que no hay forma de que otros 
+miembros del equipo trabajen en él. Para solucionar esto están los servidores remotos: un nuevo estado que deben 
+seguir nuestros archivos para conectarse y trabajar con equipos de cualquier parte del mundo. Estos servidores 
+remotos pueden estar alojados en GitHub, GitLab, BitBucket, entre otros. Lo que van a hacer es guardar el mismo 
+repositorio que tienes en tu computadora y darnos una URL con la que todos podremos acceder a los archivos del 
+proyecto para descargarlos, hacer cambios y volverlos a enviar al servidor remoto para que otras personas vean 
+los cambios, comparen sus versiones y creen nuevas propuestas para el proyecto.
+
+Esto significa que debes aprender algunos nuevos comandos:
+
+git clone url_del_servidor_remoto: Nos permite descargar los archivos de la última versión de la rama principal 
+y todo el historial de cambios en la carpeta .git del servidor remoto. Este comnado se ussa cuando tu vas a ser
+colaborador de un proyecto que ya existe y quieres traerte el repositorio de GITHUB a tu repositorio local
+
+git push direccionRepositorioRemoto ramaAEnviar: Luego de hacer git add y git commit debemos ejecutar este 
+comando para mandar los cambios al servidor remoto.
+
+git remote add origin https://github.com/user/repo.git : Para añadir la dirección de un repositorio remoto a origin, 
+lo podemos hacer así. De esta forma, podemos usar la palabra origin para referirnos a esa dirección.
+
+git remote : muestra que se ha creado un origin
+
+git remote -v : que sea verbal, muestra que hay un origin para hacer fetch(traer) o push (enviar)
+
+git push origin master : git enviele al origen la rama master
+
+git fetch: Lo usamos para traer actualizaciones del servidor remoto y guardarlas en nuestro repositorio local 
+(en caso de que hayan, por supuesto).
+
+git merge:  Lo necesitamos para combinar los últimos cambios del servidor remoto y nuestro directorio de trabajo. 
+(que aparezcan las carpetas en mi pc)
+
+git pull: Básicamente, git fetch y git merge al mismo tiempo.
+
+git pull origin master --allow-unrelated-histories : Para forzar el pull ya que permite fusionar lo que habia 
+en github con lo que se le esta enviando
+
+
+IMPORTANTE!! por primera vez cuando vamos a subir un proyecto a git hub debemos clonar el repositorio 
+de github con nuestro repositorio local el que se creo con git init
+para eso se deben ejecutar las siguientes lineas:
+
+# Primero: Guardar la URL del repositorio de GitHub
+# con el nombre de origin
+git remote add origin URL
+
+# Segundo: Verificar que la URL se haya guardado
+# correctamente:
+git remote
+git remote -v
+
+# Tercero: Traer la versión del repositorio remoto y
+# hacer merge para crear un commit con los archivos
+# de ambas partes. Podemos usar git fetch y git merge
+# o solo el git pull con el flag --allow-unrelated-histories:
+git pull origin master --allow-unrelated-histories
+
+# Por último, ahora sí podemos hacer git push para guardar
+# los cambios de nuestro repositorio local en GitHub:
+git push origin master
+
+
+
+
+Un consejo para evitarnos el problema que tuvo Freddy al vincular el repositorio deGitHub con el local, 
+es que al momento de crear el repo en GitHub lo inicialicemos SIN EL README.md y nos hagamos el hábito de 
+crearlo manualmente en cada uno de nuestros proyectos, así al momento de ejecutar $ git remote y hacer 
+un $ git push no nos diga que la historia del remoto es diferente a la del local.
+
+
+ssh-keygen -t rsa -b 4096 -C "boris.trochez@gmail.com"    Crear una llave publica y privada (ssh - secure shell)
+luego pide un lugar en donde guaradar las llaves, luego pide una passphrase que es una contraseña
+con espacios adicional que se puede asignar para fortalecer aun mas la seguridad de la llave
+publica y privada... en mi caso puse b13t ... -t rsa es el tipo de algoritmo a utilizar, -b 4096 el nivel de
+complejidad y -C es el correo conectado a la clave 
+
+
+
+luego de ello, se debe revisar que el servidor de llaves este prendido, que el proceso este corriendo de la 
+siguiente manera (en windows)
+eval $(ssh-agent -s)
+
+~ es un shortcut, una variable que tiene el nombre de la carpeta home, en este caso con el nombre de Toshiba
+
+el siguiente paso es agregar la llave al sistema, a ese servidor para que este sepa que existe, para eso 
+se debe escribir la direccion en donde esta la llave que es el home en este caso.
+
+ssh-add ~/.ssh/id_rsa     de este modo se agrega la llave privada, la que nunca se debe mostrar
+
+Nota: las llaves ssh no son por repositorio o proyectco sino por persona
+
+Para mostrar las llaves activas en el agent:
+ssh-add -l
+
+Para Borrar Todas las llaves del agent (Cuidado! solo usar si sabes agregar otra vez; Seria la misma q ya borraste o el siguiente comando )
+ssh-add -D
+
+Es recomendable tener una clave SSH por cada computador, cada usuario
+
+git remote set-url origin urlNueva  cambiar la url del repositorio en GitHub... origin es el nombre en donde esta la 
+URL actual de GITHUB
+
+NOTA! antes de hacer un commit, primero se debe traer la ultima version del repositorio con git pull origin master... 
+se hace el commit y antes de enviar con el push se deberia traer de nuevo actualizaciones del repositorio como
+buena practica, porque en lo que se hizo el commit es posible que hayan hecho cambios
+
+git tag -a nombreDelTag(v0.1) -m "unMensaje" hashDeDondeSeDeseaPonerElTag    cada commit tiene un numero de commit llamado
+hash (1580f36...), para asignarle un tag se utiliza este comando... por lo general el nombre del tag indica la version ej.
+v0.1
+
+git tag   te muestra la lista de todos los tags
+
+git show-ref --tags  te muestra la lista de todos los tags con sus repectivos hash de los commits a los que estan asignados 
+
+git push origin --tag   enviar los tags a internet. los tags son mas usados en GITHUB para que psibles colaboradores puedan 
+ver en que version estan o se han hecho. recordar que cada vez que se vaya a pushear un cambio, primero se debe hacer un pull
+del repositorio en GITHUB
+
+git tag -d nombreTagAEliminar  eliminar un tag en GIT, sin embargo, aun queda en GITHUB
+
+git push origin :refs/tags/dormido para eliminar un TAG en GITHUB
+
+Para aquellos que se pregunten como crear un alias en windows, se utiliza doskey, pero sin comillas, el ejemplo seria
+doskey arbolito=git log --all --graph --decorate --oneline
+
+
+
+
+ Forma para cambiar el passphrase de un par de llaves SSH
+ssh-keygen -p Enter file in which the key is (/Users/tekkub/.ssh/id_rsa): Key has comment '/Users/tekkub/.ssh/id_rsa' 
+Enter new passphrase (empty for no passphrase): Enter same passphrase again: Your identification has been saved with the new passphrase. 
+
+git show-branch --all   Muestra las ramas que existen y su historia
+
+gitk   Te abre un software y se ve la historia de las ramas de manera visual
+
+
+IPMORTANTE!! una imagen es un archivo y no un archivo de texto plano, los archivos binarios
+no se deberian subir a repositorio como buena practica
+
+NOTA!! En un entorno profesional normalmente se bloquea la rama master, y para enviar 
+código a dicha rama pasa por un code review y luego de su aprobación se unen 
+códigos con los llamados merge request. Para realizar pruebas enviamos el código 
+a servidores que normalmente los llamamos staging develop (servidores de pruebas) 
+luego de que se realizan las pruebas pertinentes tanto de código como de la aplicación 
+estos pasan a el servidor de producción con el ya antes mencionado merge request o pull request
+
+Un pull request es un estado intermedio antes de enviar el merge.
+El pull request permite que otros miembros del equipo revisen el código y así aprobar el merge 
+a la rama. Permite a las personas que no forman el equipo , trabajar y colaborar con una rama.
+La persona que tiene la responsabilidad de aceptar los pull request y hacer los merge tienen 
+un perfil especial y son llamados DevOps
+
+
+
+Pull request:
+Es una funcionalidad de github (en gitlab llamada merge request y en bitbucket push request), 
+en la que un colaborador pide que revisen sus cambios antes de hacer merge a una rama, normalmente 
+master. Al hacer un pull request se genera una conversación que pueden seguir los demás usuarios 
+del repositorio, así como autorizar y rechazar los cambios.
+El flujo del pull request es el siguiente Se trabaja en una rama paralela los cambios que se 
+desean (git checkout -b <rama>) Se hace un commit a la rama (git commit -am '<Comentario>')
+Se suben al remoto los cambios (git push origin <rama>) En GitHub se hace el pull request 
+comparando la rama master con la rama del fix.Uno, o varios colaboradores revisan que el 
+código sea correcto y dan feedback (en el chat del pull request) El colaborador hace los 
+cambios que desea en la rama y lo vuelve a subir al remoto (automáticamente jala la historia 
+de los cambios que se hagan en la rama, en remoto) Se aceptan los cambios en GitHub
+Se hace merge a master desde GitHub Importante: Cuando se modifica una rama, también se modifica el pull request.
+
+
+en GITHUB Fork es hacer una copia actual del proyecto y clonarlo
+Si no eres parte del equipo, no podrás hacer push o merge al proyecto. 
+Tendrás que hacer Fork al repositorio, después clonar el repositorio, hacer los cambios 
+en tu repositorio y por última hacer un pull request al dueño del repositorio
+
+Una forma de contribuir a un proyecto sin ser colaborador es haciendo un fork del mismo.
+Con esto tendremos una copia actualizada del repositorio en nuestro perfil para poder 
+realizar cambios. El proceso para poder contribuir a un proyecto es similar a hacer un 
+pull request Al hacer el pull request GitHub nos detecta que el proyecto es un fork para
+así comparar las ramas del proyecto original con nuestra copia
+NOTA: En caso de que el repo original sufra cambios, podemos agregar otra instancia del 
+servidor remoto apuntando al original con $ git remote add, que por convención se puede 
+nombrar upstream. Haciendo esto podremos traer actualizaciones del repo original con 
+$ git pull upstream master, hacer nuestras modificaciones y mandarlas al fork con 
+$ git push origin master y pedir el pull request.
+
+A. Para bajarme Repo
+Paso 1: Hacer Fork Directamente en GitHub
+Paso 2: Hacer un clone del repositorio. (Mi Fork “Con mi nombre”)
+Paso 3: Modificarlo
+Paso 4: Hacer push (push origin master)
+Paso 5: Hacer la petición de una PullRequest (Hasta esperar aprobación)
+
+B. Para Descargar cambios directamente del repositorio maestro (El dueño es el Admin “Quien aprueba ó no las PullRequest”)
+Paso 1: git remote add “Nombre (Preferencia upstream)” + Url Repo
+Paso 2: Verificar que se realizo correctamente git remote -v
+Paso 3: Descargar cambios git pull upstream master
+Paso 4: Mandar los cambios de upstream a nuestro origin git push origin master
+
+Listo todo actualizado
+
+
+Forks o Bifurcaciones
+Es una característica única de GitHub en la que se crea una copia exacta del estado actual 
+de un repositorio directamente en GitHub, éste repositorio podrá servir como otro origen y 
+se podrá clonar (como cualquier otro repositorio), en pocas palabras, lo podremos utilizar 
+como un git cualquiera
+.
+Un fork es como una bifurcación del repositorio completo, tiene una historia en común, 
+pero de repente se bifurca y pueden variar los cambios, ya que ambos proyectos podrán ser 
+modificados en paralelo y para estar al día un colaborador tendrá que estar actualizando su 
+fork con la información del original.
+.
+Al hacer un fork de un poryecto en GitHub, te conviertes en dueñ@ del repositorio fork, 
+puedes trabajar en éste con todos los permisos, pero es un repositorio completamente 
+diferente que el original, teniendo alguna historia en común.
+.
+Los forks son importantes porque es la manera en la que funciona el open source, ya que, 
+una persona puede no ser colaborador de un proyecto, pero puede contribuír al mismo, 
+haciendo mejor software que pueda ser utilizado por cualquiera.
+.
+Al hacer un fork, GitHub sabe que se hizo el fork del proyecto, por lo que se le permite al 
+colaborador hacer pull request desde su repositorio propio.
+
+Trabajando con más de 1 repositorio remoto
+Cuando trabajas en un proyecto que existe en diferentes repositorios remotos (normalmente a causa de un fork) es muy probable que desees poder trabajar con ambos repositorios, para ésto puedes crear un remoto adicional desde consola.
+
+git remote add <nombre_del_remoto> <url_del_remoto> 
+git remote upstream https://github.com/freddier/hyperblog
+Al crear un remoto adicional podremos, hacer pull desde el nuevo origen 
+(en caso de tener permisos podremos hacer fetch y push)
+
+git pull <remoto> <rama>
+git pull upstream master
+Éste pull nos traerá los cambios del remoto, por lo que se estará al día en el proyecto, 
+el flujo de trabajo cambia, en adelante se estará trabajando haciendo pull desde el 
+upstream y push al origin para pasar a hacer pull request.
+
+git pull upstream master
+git push origin master
+
+
+
+
+
+
+
+
+
+
